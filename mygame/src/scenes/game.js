@@ -30,6 +30,10 @@ export const gameScene = function (playerName, enemyName, jumpSound) {
     }
   });
 
+  player.onCollide(enemyName, () => {
+    go("gameover");
+  });
+
   // Enemy
   const spawnEnemy = () => {
     const enemy = add([

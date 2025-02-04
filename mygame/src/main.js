@@ -31,4 +31,8 @@ scene("game", () => {
   gameScene(player, enemy, sound);
 });
 
-go("game");
+scene("gameover", () => {
+  add([text("Game over")]);
+});
+
+go("main");
