@@ -15,7 +15,8 @@ export const addTextButton = function (
   y,
   btnColor,
   btnText,
-  btnTextSize
+  btnTextSize,
+  goTo
 ) {
   const btn = add([
     rect(w, h, { radius: 30 }),
@@ -27,4 +28,6 @@ export const addTextButton = function (
   ]);
 
   btn.add([text(btnText, { size: btnTextSize }), anchor("center")]);
+
+  btn.onClick(() => go(goTo));
 };

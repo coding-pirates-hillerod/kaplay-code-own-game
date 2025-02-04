@@ -24,7 +24,7 @@ setGravity(3100);
 
 scene("main", () => {
   // Tilføj start knap her
-  addTextButton(200, 100, 400, 400, Color.MAGENTA, "Hello", 20);
+  addTextButton(200, 100, 400, 400, Color.MAGENTA, "Hello", 20, "game");
 });
 
 scene("game", () => {
@@ -33,7 +33,16 @@ scene("game", () => {
 
 scene("gameover", () => {
   add([text("Game over"), pos(center().x, center().y - 200), anchor("center")]);
-  addTextButton(200, 100, center().x, center().y, Color.RED, "Play again", 20);
+  addTextButton(
+    200,
+    100,
+    center().x,
+    center().y,
+    Color.RED,
+    "Play again",
+    20,
+    "game"
+  );
 });
 
-go("gameover");
+go("main");
