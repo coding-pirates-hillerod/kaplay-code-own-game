@@ -32,7 +32,8 @@ scene("game", () => {
 });
 
 scene("gameover", () => {
-  add([text("Game over")]);
+  add([text("Game over"), pos(center().x, center().y - 200), anchor("center")]);
+  addTextButton(200, 100, center().x, center().y, Color.RED, "Play again", 20);
 });
 
-go("main");
+go("gameover");
