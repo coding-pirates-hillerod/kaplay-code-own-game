@@ -4,7 +4,7 @@ import "kaplay/global";
 import { gameScene } from "./scenes/game";
 import { addTextButton } from "./components/components";
 
-const player = "ghosty";
+const player = "bean";
 const enemy = "ghosty";
 const sound = "fart";
 

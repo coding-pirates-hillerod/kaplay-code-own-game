@@ -13,7 +13,7 @@ export const gameScene = function (playerName, enemyName, jumpSound) {
     body({ isStatic: true }),
   ]);
 
-  // Add player game object
+  // Player
   const player = add([
     sprite(playerName),
     pos(50, height() - 48 - HEIGHTS[playerName]),
@@ -29,4 +29,30 @@ export const gameScene = function (playerName, enemyName, jumpSound) {
       player.jump();
     }
   });
+
+  // Enemy
+  const spawnEnemy = () => {
+    const enemy = add([
+      sprite(enemyName),
+      area(),
+      pos(width() - 50, height() - 48 - HEIGHTS[enemyName]),
+      offscreen(),
+      enemyName,
+    ]);
+
+    enemy.onUpdate(() => {
+      enemy.move(-300, 0);
+    });
+
+    enemy.onExitScreen(() => {
+      if (enemy.pos.x < 0) {
+        destroy(enemy);
+      }
+    });
+
+    const waitTime = rand(0.7, 2);
+    wait(waitTime, spawnEnemy);
+  };
+
+  spawnEnemy();
 };
