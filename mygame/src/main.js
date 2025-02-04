@@ -4,15 +4,23 @@ import "kaplay/global";
 import { gameScene } from "./scenes/game";
 import { addTextButton } from "./components/components";
 
-const player = "bean";
+const player = "ghosty";
 const enemy = "ghosty";
-const jumpSound = "fart";
+const sound = "fart";
 
-kaplay();
+kaplay({
+  buttons: {
+    jump: {
+      keyboard: ["space"],
+    },
+  },
+});
 
 loadSprite(player, `sprites/${player}.png`);
 loadSprite(enemy, `sprites/${enemy}.png`);
-loadSound(jumpSound, `sounds/${jumpSound}.wav`);
+loadSound(sound, `sounds/${sound}.wav`);
+
+setGravity(3100);
 
 scene("main", () => {
   // Tilføj start knap her
@@ -20,7 +28,7 @@ scene("main", () => {
 });
 
 scene("game", () => {
-  gameScene(player);
+  gameScene(player, enemy, sound);
 });
 
 go("game");

@@ -1,22 +1,32 @@
-export const gameScene = function (playerName) {
+const HEIGHTS = {
+  bean: 53,
+  ghosty: 55,
+};
+
+export const gameScene = function (playerName, enemyName, jumpSound) {
   // Platform
   add([
     rect(width(), 48),
     outline(4),
     area(),
     pos(0, height() - 48),
-    // Give objects a body() component if you don't want other solid objects pass through
     body({ isStatic: true }),
   ]);
 
   // Add player game object
   const player = add([
     sprite(playerName),
-    pos(50, height() - 48 - 53),
+    pos(50, height() - 48 - HEIGHTS[playerName]),
     area(),
-    // body() component gives the ability to respond to gravity
     body({
       jumpForce: 1200,
     }),
   ]);
+
+  onButtonPress("jump", () => {
+    if (player.isGrounded()) {
+      play(jumpSound);
+      player.jump();
+    }
+  });
 };
