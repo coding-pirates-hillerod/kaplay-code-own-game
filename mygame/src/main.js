@@ -1,11 +1,18 @@
 import kaplay from "kaplay";
-// import "kaplay/global"; // uncomment if you want to use without the k. prefix
+import "kaplay/global";
 
-const k = kaplay();
+const player = "bean";
+const enemy = "ghosty";
+const jumpSound = "fart";
 
-k.loadRoot("./"); // A good idea for Itch.io publishing later
-k.loadSprite("bean", "sprites/bean.png");
+kaplay();
 
-k.add([k.pos(120, 80), k.sprite("bean")]);
+loadSprite(player, `sprites/${player}.png`);
+loadSprite(enemy, `sprites/${enemy}.png`);
+loadSound(jumpSound, `sounds/${jumpSound}.wav`);
 
-k.onClick(() => k.addKaboom(k.mousePos()));
+scene("main", () => {
+  // Tilføj start knap her
+});
+
+go("main");
