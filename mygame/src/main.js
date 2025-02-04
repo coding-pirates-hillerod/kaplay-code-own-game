@@ -1,6 +1,7 @@
 import kaplay from "kaplay";
 import "kaplay/global";
 
+import { gameScene } from "./scenes/game";
 import { addTextButton } from "./components/components";
 
 const player = "bean";
@@ -18,4 +19,8 @@ scene("main", () => {
   addTextButton(200, 100, 400, 400, Color.MAGENTA, "Hello", 20);
 });
 
-go("main");
+scene("game", () => {
+  gameScene(player);
+});
+
+go("game");
