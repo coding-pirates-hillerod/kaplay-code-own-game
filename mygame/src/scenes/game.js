@@ -4,6 +4,12 @@ const HEIGHTS = {
 };
 
 export const gameScene = function (playerName, enemyName, jumpSound) {
+  let gameSpeed = 300;
+
+  loop(1, () => {
+    gameSpeed += 25;
+  });
+
   // Platform
   add([
     rect(width(), 48),
@@ -45,7 +51,7 @@ export const gameScene = function (playerName, enemyName, jumpSound) {
     ]);
 
     enemy.onUpdate(() => {
-      enemy.move(-300, 0);
+      enemy.move(-gameSpeed, 0);
     });
 
     enemy.onExitScreen(() => {
@@ -54,7 +60,7 @@ export const gameScene = function (playerName, enemyName, jumpSound) {
       }
     });
 
-    const waitTime = rand(0.7, 2);
+    const waitTime = rand(0.7, 1.5);
     wait(waitTime, spawnEnemy);
   };
 

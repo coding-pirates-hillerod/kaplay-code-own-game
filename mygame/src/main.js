@@ -24,7 +24,16 @@ setGravity(3100);
 
 scene("main", () => {
   // Tilføj start knap her
-  addTextButton(200, 100, 400, 400, Color.MAGENTA, "Hello", 20, "game");
+  addTextButton(
+    200,
+    100,
+    center().x,
+    center().y,
+    Color.RED,
+    "Start",
+    20,
+    "game"
+  );
 });
 
 scene("game", () => {
